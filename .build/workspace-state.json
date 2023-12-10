@@ -1,0 +1,24 @@
+{
+  "object" : {
+    "artifacts" : [
+      {
+        "kind" : "xcframework",
+        "packageRef" : {
+          "identity" : "data-analytics-sdk",
+          "kind" : "root",
+          "location" : "/Users/rivuc/codebase/data-analytics-sdk",
+          "name" : "data-analytics-sdk"
+        },
+        "path" : "/Users/rivuc/codebase/data-analytics-sdk/shared/build/XCFrameworks/debug/analyticssdk.xcframework",
+        "source" : {
+          "type" : "local"
+        },
+        "targetName" : "analyticssdk"
+      }
+    ],
+    "dependencies" : [
+
+    ]
+  },
+  "version" : 6
+}
