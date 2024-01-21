@@ -1,19 +1,11 @@
 import SwiftUI
-import analyticssdk
+import india_conferences
 
 struct ContentView: View {
 	let greet = "Hello iOS"
-    let analyticsSdk = AnalyticsSDK()
-
-	var body: some View {
-		Text(greet)
-	}
     
-    init() {
-
-        analyticsSdk.sendHeartbeat(heartbeat: Heartbeat(clientTimeStamp: InstantModel(epochSeconds: 100000, nanos: 1), profileId: "Some id"), onSuccess: {
-            debugPrint("Success")
-        }, onError: { error in debugPrint("Errors \(error)")})
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
     
 }

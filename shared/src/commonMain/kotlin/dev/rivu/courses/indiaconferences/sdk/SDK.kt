@@ -11,7 +11,7 @@ import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 
 public class SDK: KoinComponent {
-    val usersAPi: UsersApi by inject()
+    private val usersAPi: UsersApi by inject()
 
     init {
         startKoin {

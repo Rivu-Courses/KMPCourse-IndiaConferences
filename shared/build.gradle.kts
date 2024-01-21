@@ -9,17 +9,10 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization")
-    id("co.touchlab.faktory.kmmbridge")
+    //id("co.touchlab.faktory.kmmbridge")
     id("co.touchlab.skie")
     id("app.cash.sqldelight")
     `maven-publish`
-}
-
-kmmbridge {
-    spm()
-    mavenPublishArtifacts()
-    versionPrefix.set(SDKConfig.version)
-    frameworkName.set(SDKConfig.sdkName)
 }
 
 
@@ -69,11 +62,9 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             xcFramework.add(this)
-            baseName = SDKConfig.sdkName
+            baseName = "IndiaConferences"
         }
     }
-
-
 
     js(IR) {
         moduleName = "@rivucourses/${SDKConfig.sdkName}"
