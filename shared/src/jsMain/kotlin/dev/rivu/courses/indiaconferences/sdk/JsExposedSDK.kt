@@ -1,7 +1,5 @@
 package dev.rivu.courses.indiaconferences.sdk
 
-import dev.rivu.courses.indiaconferences.sdk.network.models.UsersResponseItem
-
 @OptIn(ExperimentalJsExport::class)
 @JsExport
 data class Users(
@@ -29,13 +27,13 @@ data class Users(
 @OptIn(ExperimentalJsExport::class)
 @JsExport
 object JsSDK {
-    private val sdk = SDK()
+//    private val sdk = SDKCore()
 
     fun loadUsers(
         onSuccess: (Array<Users>) -> Unit,
         onError: (Throwable) -> Unit
     ) {
-        sdk.loadUsers(
+        /*sdk.loadUsers(
             onSuccess = {
                 val array = it.map { user ->
                     Users(
@@ -57,6 +55,6 @@ object JsSDK {
                 onSuccess(array)
             },
             onError = onError
-        )
+        )*/
     }
 }

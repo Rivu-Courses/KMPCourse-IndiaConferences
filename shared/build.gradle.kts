@@ -9,9 +9,9 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization")
-    //id("co.touchlab.faktory.kmmbridge")
     id("co.touchlab.skie")
     id("app.cash.sqldelight")
+    id("com.google.devtools.ksp").version("1.8.21-1.0.11")
     `maven-publish`
 }
 
@@ -45,7 +45,7 @@ kotlin {
         publishLibraryVariants("release", "debug")
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "19"
             }
         }
     }
@@ -56,9 +56,6 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64(),
-        tvosArm64(),
-        tvosX64(),
-        tvosSimulatorArm64(),
     ).forEach {
         it.binaries.framework {
             xcFramework.add(this)
@@ -82,16 +79,16 @@ kotlin {
                 implementation(libs.coroutines.core)
                 implementation(libs.kotlinx.datetime)
 
-                implementation(libs.koin.core)
                 implementation(libs.skie)
                 implementation(libs.kmpSettings.core)
                 implementation(libs.kmpSettings.noArg)
+
+                implementation(libs.kotlinInject.runtime)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation(libs.koin.test)
             }
         }
 
@@ -106,7 +103,6 @@ kotlin {
                 implementation(libs.ktor.client.okHttp)
 
                 implementation(libs.okhttp.loggingInterceptor)
-                implementation(libs.koin.android)
                 implementation(libs.sqlDelight.android)
             }
         }
@@ -115,12 +111,6 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.darwin)
                 implementation(libs.sqlDelight.native)
-            }
-        }
-
-        val tvosMain by getting {
-            dependencies {
-                dependsOn(nativeMain)
             }
         }
 
@@ -138,6 +128,10 @@ android {
     defaultConfig {
         minSdk = SDKConfig.Android.minSdk
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
+    }
 }
 
 publishing {
@@ -150,4 +144,15 @@ publishing {
             }
         }
     }
+}
+
+dependencies {
+    // KSP will eventually have better multiplatform support and we'll be able to simply have
+    // `ksp libs.kotlinInject.compiler` in the dependencies block of each source set
+    // https://github.com/google/ksp/pull/1021
+    add("kspIosX64", libs.kotlinInject.compiler)
+    add("kspIosArm64", libs.kotlinInject.compiler)
+    add("kspIosSimulatorArm64", libs.kotlinInject.compiler)
+    add("kspAndroid", libs.kotlinInject.compiler)
+    add("kspJs", libs.kotlinInject.compiler)
 }

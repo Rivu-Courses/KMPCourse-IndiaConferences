@@ -1,5 +1,6 @@
 [versions]
 kotlin = "1.8.21"
+ksp = '1.8.21-1.0.11'
 
 ## SDK versions
 
@@ -24,6 +25,7 @@ sqlDelight = "2.0.0-alpha05"
 kotlinxDatetime = "0.4.1"
 skie = "0.4.18"
 kmpSettings = "1.0.0"
+kotlinInject = '0.6.1'
 
 [libraries]
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -60,6 +62,9 @@ skie = { module = "co.touchlab.skie:configuration-annotations", version.ref = "s
 kmpSettings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "kmpSettings"}
 kmpSettings-noArg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "kmpSettings"}
 
+kotlinInject-compiler = { module = 'me.tatarka.inject:kotlin-inject-compiler-ksp', version.ref = 'kotlinInject' }
+kotlinInject-runtime = { module = 'me.tatarka.inject:kotlin-inject-runtime', version.ref = 'kotlinInject' }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -69,7 +74,7 @@ wire = { id = "com.squareup.wire", version.ref = "wire" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 kmmbridge = { id = "co.touchlab.faktory.kmmbridge", version.ref = "kmmbridge" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
-
+ksp = { id = 'com.google.devtools.ksp', version.ref = 'ksp' }
 
 
 

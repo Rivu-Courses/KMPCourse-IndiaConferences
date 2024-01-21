@@ -1,23 +1,19 @@
 package dev.rivu.courses.indiaconferences.sdk
 
-import dev.rivu.courses.indiaconferences.sdk.network.NetworkModule
+import dev.rivu.courses.indiaconferences.sdk.network.NetworkComponent
 import dev.rivu.courses.indiaconferences.sdk.network.UsersApi
 import dev.rivu.courses.indiaconferences.sdk.network.models.UsersResponseItem
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-import org.koin.core.context.startKoin
+import me.tatarka.inject.annotations.Component
+import me.tatarka.inject.annotations.Inject
+import me.tatarka.inject.annotations.Provides
 
-public class SDK: KoinComponent {
-    private val usersAPi: UsersApi by inject()
-
-    init {
-        startKoin {
-            modules(NetworkModule)
-        }
-    }
+@Inject
+class SDKCore internal constructor(
+    private val usersAPi: UsersApi
+) {
 
     fun printUsers(): Job {
         return GlobalScope.launch {
@@ -40,4 +36,8 @@ public class SDK: KoinComponent {
         }
     }
 
+}
+
+internal interface SDKComponent {
+    val sdk: SDKCore
 }

@@ -10,7 +10,9 @@ expect val KtorClient: HttpClient
 
 val baseUrl = "https://jsonplaceholder.typicode.com/"
 
-fun Configuration.jsonContentNegotiation() = Json {
+fun Configuration.jsonContentNegotiation() = json
+
+val json = Json {
     ignoreUnknownKeys = true
     isLenient = true
 }

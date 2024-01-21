@@ -6,7 +6,9 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class UsersApi(
     private val client: HttpClient,
     private val url: String,
@@ -16,7 +18,8 @@ class UsersApi(
 
         return if (response.status.value in 200..202) {
             //success
-            response.body<List<UsersResponseItem>>()
+            val responseStr = response.bodyAsText()
+            return json.decodeFromString(responseStr)
         } else {
             throw RuntimeException(response.bodyAsText())
         }

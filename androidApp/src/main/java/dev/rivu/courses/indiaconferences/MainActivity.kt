@@ -12,6 +12,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion
 import androidx.compose.ui.tooling.preview.Preview
 import dev.rivu.courses.indiaconferences.sdk.AndroidCode
 import dev.rivu.courses.indiaconferences.sdk.SDK
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
 
         AndroidCode.doSomething()
 
-        sdk.loadUsers(
+        sdk.sdkCore.loadUsers(
             onSuccess = {
                 usersState.value = it
             },
@@ -47,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     LazyColumn {
                         items(usersState.value) {
-                            Text(it.name)
+                            Text(it.name, color = Color.White)
                         }
                     }
                 }
