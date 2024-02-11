@@ -9,7 +9,7 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    /*@OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -18,7 +18,7 @@ kotlin {
             }
         }
         binaries.executable()
-    }
+    }*/
     
     androidTarget {
         compilations.all {

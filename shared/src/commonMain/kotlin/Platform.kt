@@ -3,3 +3,5 @@ interface Platform {
 }
 
 expect fun getPlatform(): Platform
+
+fun isDebug(): Boolean = true
