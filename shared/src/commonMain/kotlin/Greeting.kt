@@ -11,7 +11,7 @@ class Greeting {
     }
 
     suspend fun getResponseFromServer(): String {
-        val response = KtorClient.get("http://0.0.0.0:8080")
-        return response.bodyAsText()
+        val response = KtorClient.get("")
+        return "TODO" /*response.bodyAsText()*/
     }
 }
