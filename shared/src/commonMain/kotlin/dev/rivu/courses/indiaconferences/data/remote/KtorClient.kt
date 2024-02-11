@@ -1,4 +1,4 @@
-package dev.rivu.courses.indiaconferences.remote
+package dev.rivu.courses.indiaconferences.data.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpRequestRetry.Configuration
